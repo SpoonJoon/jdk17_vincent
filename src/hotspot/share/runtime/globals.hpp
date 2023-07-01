@@ -158,7 +158,7 @@ const intx ObjectAlignmentInBytes = 8;
                       range,                                                \
                       constraint)                                           \
    /*VINCENT flag added*/                                                   \
-  develop(bool, Vincent, false,                                             \
+  product(bool, Vincent, false,                                             \
           "Profile Hot Methods using Vincent")                              \
                                                                             \
   notproduct(bool, CheckCompressedOops, true,                               \

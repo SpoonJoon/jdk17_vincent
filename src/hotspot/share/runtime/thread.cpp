@@ -2855,6 +2855,10 @@ jint Threads::create_vm(JavaVMInitArgs* args, bool* canTryAgain) {
   // Initialize global data structures and create system classes in heap
   vm_init_globals();
 
+  //VINCENT::adding global logger
+  VincentLogger* vincent_logger = new VincentLogger();
+  vincent_logger->enqueue("VM init globals done");
+
 #if INCLUDE_JVMCI
   if (JVMCICounterSize > 0) {
     JavaThread::_jvmci_old_thread_counters = NEW_C_HEAP_ARRAY(jlong, JVMCICounterSize, mtJVMCI);
@@ -3499,6 +3503,13 @@ void Threads::destroy_vm() {
 #if defined(COMPILER2) && !defined(PRODUCT)
   IdealGraphPrinter::clean_up();
 #endif
+
+  //VINCENT delete logger and print the output
+  if(vincent_logger!=nullptr){
+    vincent_logger->print_logger();
+    delete vincent_logger;
+    vincent_logger=nullptr;
+  }
 
   notify_vm_shutdown();
 

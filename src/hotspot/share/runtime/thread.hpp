@@ -50,6 +50,10 @@
 #include "utilities/exceptions.hpp"
 #include "utilities/globalDefinitions.hpp"
 #include "utilities/macros.hpp"
+
+//VINCENT 
+#include "logging/vincentLogger.hpp"
+
 #if INCLUDE_JFR
 #include "jfr/support/jfrThreadExtension.hpp"
 #endif
@@ -90,6 +94,9 @@ DEBUG_ONLY(class ResourceMark;)
 class WorkerThread;
 
 class JavaThread;
+
+//VINCENT
+extern VincentLogger *vincent_logger;
 
 // Class hierarchy
 // - Thread

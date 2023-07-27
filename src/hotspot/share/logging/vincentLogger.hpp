@@ -9,9 +9,11 @@
 class VincentLogEntry : public CHeapObj<mtInternal> {
 public:
   char* message;
+  VincentLogEntry* next;
 
   VincentLogEntry(const char* msg) {
     message = strdup(msg);
+    next = NULL;
   }
 
   ~VincentLogEntry() {

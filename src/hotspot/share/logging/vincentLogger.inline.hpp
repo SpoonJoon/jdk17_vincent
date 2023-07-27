@@ -3,6 +3,7 @@
 
 #include "logging/vincentLogger.hpp"
 #include "utilities/lockFreeQueue.inline.hpp"
+#include "runtime/atomic.hpp"
 
 #include <cstdio>
 
@@ -14,7 +15,12 @@ VincentLogger::VincentLogger() {
 
 void VincentLogger::enqueue(const char* message) {
   VincentLogEntry* new_entry = new VincentLogEntry(message);
-  VincentLogEntry* prev_tail = (VincentLogEntry*) Atomic::xchg((intptr_t)new_entry, &_tail);
+  VincentLogEntry* prev_tail = _tail;
+
+  while (prev_tail != Atomic::xchg(&_tail, new_entry)) {
+    prev_tail = _tail;
+  }
+
   prev_tail->next = new_entry;
 }
 
@@ -33,7 +39,7 @@ const char* VincentLogger::dequeue() {
 }
 
 void VincentLogger::print_logger() {
-  FILE* file = fopen('joon.csv', "a");  // Open the file in append mode
+  FILE* file = fopen("joon.csv", "a");  // Open the file in append mode
   if (file == NULL) {
     return;
   }

@@ -96,8 +96,6 @@ class WorkerThread;
 
 class JavaThread;
 
-//VINCENT
-extern VincentLogger *vincent_logger;
 
 // Class hierarchy
 // - Thread

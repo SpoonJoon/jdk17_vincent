@@ -2,7 +2,6 @@
 #define SHARE_VINCENTLOGGER_VINCENTLOGGER_HPP
 
 #include "memory/allocation.hpp"
-#include "runtime/atomic.hpp"
 
 
 //mtInternal look at allocation.hpp line 129
@@ -24,9 +23,9 @@ public:
 
 class VincentLogger : public CHeapObj<mtInternal> {
 private:
-  // Atomically store to a location
-  Atomic<VincentLogEntry*> _head;
-  Atomic<VincentLogEntry*> _tail;
+  
+  VincentLogEntry* _head;
+  VincentLogEntry* _tail;
 
 public:
   VincentLogger();

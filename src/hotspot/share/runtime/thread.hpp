@@ -210,9 +210,7 @@ class Thread: public ThreadShadow {
   }
 
 public:
-  //Vincent Logger
-  static VincentLogger* vincent_logger;
-
+ 
   // Is the target JavaThread protected by the calling Thread
   // or by some other mechanism:
   static bool is_JavaThread_protected(const JavaThread* p);
@@ -1670,6 +1668,10 @@ class Threads: AllStatic {
   static void initialize_jsr292_core_classes(TRAPS);
 
  public:
+   //Vincent Logger
+  static VincentLogger* vincent_logger;
+
+
   // Thread management
   // force_daemon is a concession to JNI, where we may need to add a
   // thread to the thread list before allocating its thread object

@@ -971,10 +971,6 @@ bool Arguments::parse_argument(const char* arg, JVMFlagOrigin origin) {
     if (real_name == NULL) {
       return false;
     }
-    /*VINCENT*/
-    if (real_name == "Vincent"){
-      tty->print_cr("Vincent Flag Found.")
-    }
     JVMFlag* flag = JVMFlag::find_flag(real_name);
     return set_bool_flag(flag, false, origin);
   }

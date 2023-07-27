@@ -52,7 +52,8 @@
 #include "utilities/macros.hpp"
 
 //VINCENT 
-#include "logging/vincentLogger.hpp"
+//VINCENT logger
+#include "logging/vincentLogger.inline.hpp"
 
 #if INCLUDE_JFR
 #include "jfr/support/jfrThreadExtension.hpp"
@@ -210,7 +211,10 @@ class Thread: public ThreadShadow {
     return _nested_threads_hazard_ptr_cnt;
   }
 
- public:
+public:
+  //Vincent Logger
+  static VincentLogger* vincent_logger;
+
   // Is the target JavaThread protected by the calling Thread
   // or by some other mechanism:
   static bool is_JavaThread_protected(const JavaThread* p);

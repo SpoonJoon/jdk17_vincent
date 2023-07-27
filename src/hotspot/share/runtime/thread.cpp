@@ -150,7 +150,7 @@
 #endif
 
 //VINCENT logger
-#include "logging/vincentLogger.hpp"
+#include "logging/vincentLogger.inline.hpp"
 
 // Initialization after module runtime initialization
 void universe_post_module_init();  // must happen after call_initPhase2

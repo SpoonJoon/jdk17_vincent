@@ -2858,8 +2858,8 @@ jint Threads::create_vm(JavaVMInitArgs* args, bool* canTryAgain) {
   vm_init_globals();
 
   //VINCENT::adding global logger
-  vincent_logger = new VincentLogger();
-  vincent_logger->enqueue("VM init globals done");
+  Thread::vincent_logger = new VincentLogger();
+  Thread::vincent_logger->enqueue("VM init globals done");
 
 #if INCLUDE_JVMCI
   if (JVMCICounterSize > 0) {
@@ -3507,10 +3507,10 @@ void Threads::destroy_vm() {
 #endif
 
   //VINCENT delete logger and print the output
-  if(vincent_logger!=nullptr){
-    vincent_logger->print_logger();
-    delete vincent_logger;
-    vincent_logger=nullptr;
+  if(Thread::vincent_logger!=nullptr){
+    Thread::vincent_logger->print_logger();
+    delete Thread::vincent_logger;
+    Thread::vincent_logger=nullptr;
   }
 
   notify_vm_shutdown();

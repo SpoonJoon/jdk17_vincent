@@ -53,7 +53,7 @@
 
 //VINCENT 
 //VINCENT logger
-#include "logging/vincentLogger.inline.hpp"
+#include "logging/vincentLogger.hpp"
 
 #if INCLUDE_JFR
 #include "jfr/support/jfrThreadExtension.hpp"

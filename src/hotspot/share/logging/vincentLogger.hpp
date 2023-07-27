@@ -39,4 +39,6 @@ public:
   void print_logger();
 };
 
+#include "vincentLogger.inline.hpp"
+
 #endif // SHARE_VincentLOGGER_VincentLOGGER_HPP

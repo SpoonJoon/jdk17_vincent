@@ -1,6 +1,7 @@
 #ifndef LOGGING_VINCENTLOGGER_VINCENTLOGGERINLINE_HPP_
 #define LOGGING_VINCENTLOGGER_VINCENTLOGGERINLINE_HPP_
 
+#include "vincentLogger.hpp"
 #include "utilities/lockFreeQueue.inline.hpp"
 #include "runtime/atomic.hpp"
 

@@ -39,7 +39,7 @@ const char* VincentLogger::dequeue() {
 }
 
 void VincentLogger::print_logger() {
-  FILE* file = fopen("joon.csv", "a");  // Open the file in append mode
+  FILE* file = fopen("../vincent_ouptut/joon.csv", "a");  // Open the file in append mode
   if (file == NULL) {
     return;
   }

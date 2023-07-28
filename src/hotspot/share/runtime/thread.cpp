@@ -149,6 +149,9 @@
 #include "jfr/jfr.hpp"
 #endif
 
+//Vincentlogger definition
+VincentLogger* Threads::vincent_logger;
+
 // Initialization after module runtime initialization
 void universe_post_module_init();  // must happen after call_initPhase2
 
@@ -2855,6 +2858,10 @@ jint Threads::create_vm(JavaVMInitArgs* args, bool* canTryAgain) {
   // Initialize global data structures and create system classes in heap
   vm_init_globals();
 
+  //VINCENT::adding global logger
+  vincent_logger = new VincentLogger();
+  vincent_logger->enqueue("VM init globals done");
+
 #if INCLUDE_JVMCI
   if (JVMCICounterSize > 0) {
     JavaThread::_jvmci_old_thread_counters = NEW_C_HEAP_ARRAY(jlong, JVMCICounterSize, mtJVMCI);
@@ -3422,6 +3429,13 @@ void JavaThread::invoke_shutdown_hooks() {
 void Threads::destroy_vm() {
   JavaThread* thread = JavaThread::current();
 
+   //VINCENT delete logger and print the output
+  if(vincent_logger!=nullptr){
+    vincent_logger->print_logger();
+    delete vincent_logger;
+    vincent_logger=nullptr;
+  }
+
 #ifdef ASSERT
   _vm_complete = false;
 #endif
@@ -3499,6 +3513,8 @@ void Threads::destroy_vm() {
 #if defined(COMPILER2) && !defined(PRODUCT)
   IdealGraphPrinter::clean_up();
 #endif
+
+ 
 
   notify_vm_shutdown();
 

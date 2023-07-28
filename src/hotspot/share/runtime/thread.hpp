@@ -50,6 +50,11 @@
 #include "utilities/exceptions.hpp"
 #include "utilities/globalDefinitions.hpp"
 #include "utilities/macros.hpp"
+
+//VINCENT 
+//VINCENT logger
+#include "logging/vincentLogger.hpp"
+
 #if INCLUDE_JFR
 #include "jfr/support/jfrThreadExtension.hpp"
 #endif
@@ -90,6 +95,7 @@ DEBUG_ONLY(class ResourceMark;)
 class WorkerThread;
 
 class JavaThread;
+
 
 // Class hierarchy
 // - Thread
@@ -203,7 +209,8 @@ class Thread: public ThreadShadow {
     return _nested_threads_hazard_ptr_cnt;
   }
 
- public:
+public:
+ 
   // Is the target JavaThread protected by the calling Thread
   // or by some other mechanism:
   static bool is_JavaThread_protected(const JavaThread* p);
@@ -1661,6 +1668,10 @@ class Threads: AllStatic {
   static void initialize_jsr292_core_classes(TRAPS);
 
  public:
+   //Vincent Logger
+  static VincentLogger* vincent_logger;
+
+
   // Thread management
   // force_daemon is a concession to JNI, where we may need to add a
   // thread to the thread list before allocating its thread object

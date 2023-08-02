@@ -3429,12 +3429,7 @@ void JavaThread::invoke_shutdown_hooks() {
 void Threads::destroy_vm() {
   JavaThread* thread = JavaThread::current();
 
-   //VINCENT delete logger and print the output
-  if(vincent_logger!=nullptr){
-    vincent_logger->print_logger();
-    delete vincent_logger;
-    vincent_logger=nullptr;
-  }
+
 
 #ifdef ASSERT
   _vm_complete = false;
@@ -3452,7 +3447,12 @@ void Threads::destroy_vm() {
     e.set_reason("No remaining non-daemon Java threads");
     e.commit();
   }
-
+   //VINCENT delete logger and print the output
+  if(vincent_logger!=nullptr){
+    vincent_logger->print_logger();
+    delete vincent_logger;
+    vincent_logger=nullptr;
+  }
   // Hang forever on exit if we are reporting an error.
   if (ShowMessageBoxOnError && VMError::is_error_reported()) {
     os::infinite_sleep();

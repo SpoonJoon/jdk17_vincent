@@ -1,3 +1,4 @@
+
 /*
  * Copyright (c) 1997, 2021, Oracle and/or its affiliates. All rights reserved.
  * Copyright (c) 2021, Azul Systems, Inc. All rights reserved.
@@ -2861,6 +2862,7 @@ jint Threads::create_vm(JavaVMInitArgs* args, bool* canTryAgain) {
   //VINCENT::adding global logger
   vincent_logger = new VincentLogger();
   vincent_logger->enqueue("VM init globals done");
+  tty->print_cr("Vincent Enqueue finished");
 
 #if INCLUDE_JVMCI
   if (JVMCICounterSize > 0) {
@@ -3447,6 +3449,8 @@ void Threads::destroy_vm() {
     e.set_reason("No remaining non-daemon Java threads");
     e.commit();
   }
+
+  tty->print_cr("Vincent destroy_vm()");
    //VINCENT delete logger and print the output
   if(vincent_logger!=nullptr){
     vincent_logger->print_logger();

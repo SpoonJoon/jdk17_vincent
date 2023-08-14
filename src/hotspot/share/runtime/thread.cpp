@@ -150,8 +150,9 @@
 #include "jfr/jfr.hpp"
 #endif
 
-//Vincentlogger definition
-VincentLogger* Threads::vincent_logger;
+//VINCENT logger
+#include "logging/vincentLogger.hpp"
+
 
 // Initialization after module runtime initialization
 void universe_post_module_init();  // must happen after call_initPhase2

@@ -3,6 +3,9 @@
 
 #include "memory/allocation.hpp"
 
+//Vincent Logger
+extern VincentLogger* vincent_logger;
+
 
 //mtInternal look at allocation.hpp line 129
 //we use the CHeap so the logger isnt managed by the gc

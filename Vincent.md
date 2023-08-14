@@ -5,6 +5,7 @@ The Vincent flag is a boolean production flag indicating the usage of Vincent (e
 
 hotspot/shared/runtime/arguments.cpp & globals.hpp
 ```
+
    ./build/*/images/jdk/bin/java -XX:+Vincent -XX:+PrintVMOptions -jar dacapo-9.12-MR1-bach.jar antlr
 ```
 to access flags try

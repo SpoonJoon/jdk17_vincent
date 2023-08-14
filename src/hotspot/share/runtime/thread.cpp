@@ -3431,7 +3431,12 @@ void JavaThread::invoke_shutdown_hooks() {
 void Threads::destroy_vm() {
   JavaThread* thread = JavaThread::current();
 
-
+   //VINCENT delete logger and print the output
+  if(vincent_logger!=nullptr){
+    vincent_logger->print_logger();
+    delete vincent_logger;
+    vincent_logger=nullptr;
+  }
 
 #ifdef ASSERT
   _vm_complete = false;

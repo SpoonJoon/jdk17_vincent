@@ -3,8 +3,6 @@
 
 #include "memory/allocation.hpp"
 
-//Vincent Logger
-extern VincentLogger* vincent_logger;
 
 
 //mtInternal look at allocation.hpp line 129
@@ -42,6 +40,8 @@ public:
   void print_logger();
 };
 
+//Vincent Logger
+extern VincentLogger* vincent_logger;
 
 
 #endif // SHARE_VincentLOGGER_VincentLOGGER_HPP

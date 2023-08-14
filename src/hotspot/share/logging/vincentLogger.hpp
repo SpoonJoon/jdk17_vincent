@@ -3,8 +3,6 @@
 
 #include "memory/allocation.hpp"
 
-
-
 //mtInternal look at allocation.hpp line 129
 //we use the CHeap so the logger isnt managed by the gc
 class VincentLogEntry : public CHeapObj<mtInternal> {
@@ -40,8 +38,8 @@ public:
   void print_logger();
 };
 
-//Vincent Logger
 extern VincentLogger* vincent_logger;
+
 
 
 #endif // SHARE_VincentLOGGER_VincentLOGGER_HPP

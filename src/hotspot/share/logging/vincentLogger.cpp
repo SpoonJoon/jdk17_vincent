@@ -7,6 +7,8 @@
 
 #include <cstdio>
 
+ VincentLogger* vincent_logger = new VincentLogger();
+
 VincentLogger::VincentLogger() {
   VincentLogEntry* dummy = new VincentLogEntry("");
   _head = dummy;

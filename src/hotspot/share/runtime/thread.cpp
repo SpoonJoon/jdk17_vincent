@@ -2860,8 +2860,7 @@ jint Threads::create_vm(JavaVMInitArgs* args, bool* canTryAgain) {
   // Initialize global data structures and create system classes in heap
   vm_init_globals();
 
-  //VINCENT::adding global logger
-  vincent_logger = new VincentLogger();
+  
   vincent_logger->enqueue("VM init globals done");
   tty->print_cr("Vincent Enqueue finished");
 

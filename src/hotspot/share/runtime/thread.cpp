@@ -1,3 +1,4 @@
+
 /*
  * Copyright (c) 1997, 2021, Oracle and/or its affiliates. All rights reserved.
  * Copyright (c) 2021, Azul Systems, Inc. All rights reserved.
@@ -149,8 +150,9 @@
 #include "jfr/jfr.hpp"
 #endif
 
-//Vincentlogger definition
-VincentLogger* Threads::vincent_logger;
+//VINCENT logger
+#include "logging/vincentLogger.hpp"
+
 
 // Initialization after module runtime initialization
 void universe_post_module_init();  // must happen after call_initPhase2
@@ -2858,9 +2860,9 @@ jint Threads::create_vm(JavaVMInitArgs* args, bool* canTryAgain) {
   // Initialize global data structures and create system classes in heap
   vm_init_globals();
 
-  //VINCENT::adding global logger
-  vincent_logger = new VincentLogger();
+  
   vincent_logger->enqueue("VM init globals done");
+  tty->print_cr("Vincent Enqueue finished");
 
 #if INCLUDE_JVMCI
   if (JVMCICounterSize > 0) {
@@ -3453,6 +3455,13 @@ void Threads::destroy_vm() {
     e.commit();
   }
 
+  tty->print_cr("Vincent destroy_vm()");
+   //VINCENT delete logger and print the output
+  if(vincent_logger!=nullptr){
+    vincent_logger->print_logger();
+    delete vincent_logger;
+    vincent_logger=nullptr;
+  }
   // Hang forever on exit if we are reporting an error.
   if (ShowMessageBoxOnError && VMError::is_error_reported()) {
     os::infinite_sleep();

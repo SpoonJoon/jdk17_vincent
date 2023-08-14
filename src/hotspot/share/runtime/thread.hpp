@@ -51,9 +51,6 @@
 #include "utilities/globalDefinitions.hpp"
 #include "utilities/macros.hpp"
 
-//VINCENT 
-//VINCENT logger
-#include "logging/vincentLogger.hpp"
 
 #if INCLUDE_JFR
 #include "jfr/support/jfrThreadExtension.hpp"
@@ -1668,8 +1665,6 @@ class Threads: AllStatic {
   static void initialize_jsr292_core_classes(TRAPS);
 
  public:
-   //Vincent Logger
-  static VincentLogger* vincent_logger;
 
 
   // Thread management

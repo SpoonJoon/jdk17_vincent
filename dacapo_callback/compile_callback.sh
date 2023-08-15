@@ -1,1 +1,1 @@
-javac -cp ../dacapo-9.12-MR1-bach.jar VincentCallback.java
+javac -cp ../dacapo-9.12-bach.jar VincentCallback.java

@@ -27,7 +27,7 @@ public class VincentCallback extends Callback {
   @Override
   public void complete(String benchmark, boolean valid) {
     super.complete(benchmark, valid);
-    System.err.println("Example callback " + (valid ? "PASSED " : "FAILED ") + (isWarmup() ? "warmup " : "") + benchmark + (requests > 0 ? (", observed "+requests+" requests") : ""));
+    System.err.println("Example callback " + (valid ? "PASSED " : "FAILED ") + (isWarmup() ? "warmup " : "") + benchmark);
     System.err.flush();
   };
 }

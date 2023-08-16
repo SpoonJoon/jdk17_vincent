@@ -20,5 +20,5 @@ NashornProfile.txt
 /.settings/
 /compile_commands.json
 /.cache
-/.jar
-/.class
+/*.jar
+*.class

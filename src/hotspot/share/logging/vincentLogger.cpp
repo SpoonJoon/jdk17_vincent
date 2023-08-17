@@ -5,6 +5,10 @@
 #include "utilities/lockFreeQueue.inline.hpp"
 #include "runtime/atomic.hpp"
 
+//for the jni print logger
+#include "jni.h"
+#include "java_lang_Thread.h"
+
 #include <cstdio>
 
 VincentLogger* vincent_logger = new VincentLogger();
@@ -55,5 +59,15 @@ void VincentLogger::print_logger() {
 
   fclose(file);  // Close the file
 }
+
+
+extern "C" {
+JNIEXPORT void JNICALL Java_java_lang_Thread_printVincentLogger
+  (JNIEnv *env, jclass threadClass) {
+    // Print the global data structure to a file.
+    vincent_logger->print_logger();
+  }
+}
+
 
 #endif 

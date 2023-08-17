@@ -2097,4 +2097,7 @@ public class Thread implements Runnable {
     private native void interrupt0();
     private static native void clearInterruptEvent();
     private native void setNativeName(String name);
+
+    /** Vincent JNI function */
+    public native void printVincentLogger();
 }

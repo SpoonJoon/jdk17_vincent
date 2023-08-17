@@ -7,7 +7,6 @@
 
 //for the jni print logger
 #include "jni.h"
-#include "java_lang_Thread.h"
 
 #include <cstdio>
 

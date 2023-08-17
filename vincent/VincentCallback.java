@@ -55,7 +55,7 @@ public class VincentCallback extends Callback {
       myThread.start();
       myThread.join();
 
-  } catch (ClassNotFoundException | NoSuchMethodException | IllegalAccessException | InterruptedException e) {
+  } catch (Exception e) {
       e.printStackTrace();
   }
 

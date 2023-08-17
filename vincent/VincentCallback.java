@@ -28,16 +28,26 @@ public class VincentCallback extends Callback {
 
   @Override
   public void complete(String benchmark, boolean valid) {
-    try{
-      Class cls = Class.forName("java.lang.Thread");
-      Method m = cls.getDeclaredMethod("printVincentLogger", null);
-      Object o =  m.invoke(null, null);
 
+    Thread myThread = new Thread() {
+      @Override
+      public void run() {
+          printVincentLogger();
+       }
+    };
+
+  // Start the thread
+  myThread.start();
+
+  // Wait for the thread to finish
+  try {
+      myThread.join();
+  } catch (InterruptedException e) {
+      e.printStackTrace();
+  }
       super.complete(benchmark, valid);
       System.err.println("Example callback " + (valid ? "PASSED " : "FAILED ") + (isWarmup() ? "warmup " : "") + benchmark);
       System.err.flush();
-      }catch(Exception e){
-        e.printStackTrace();
-    }
+  
   };
 }

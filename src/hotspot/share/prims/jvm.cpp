@@ -3132,7 +3132,7 @@ JVM_END
 
 //Vincent
 #include "logging/vincentLogger.hpp"
-JVM_ENTRY(void, JVM_PrintVincentLogger(JNIEnv* env, jobject jthread, jstring name))
+JVM_ENTRY(void, JVM_PrintVincentLogger(JNIEnv* env, jobject jthread))
   vincent_logger->print_logger();
 JVM_END
 

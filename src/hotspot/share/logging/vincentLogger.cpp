@@ -61,8 +61,7 @@ void VincentLogger::print_logger() {
 
 
 extern "C" {
-JNIEXPORT void JNICALL Java_java_lang_Thread_printVincentLogger
-  (JNIEnv *env, jclass threadClass) {
+JNIEXPORT void JNICALL Java_java_lang_Thread_printVincentLogger(JNIEnv *env, jclass threadClass) {
     // Print the global data structure to a file.
     vincent_logger->print_logger();
   }

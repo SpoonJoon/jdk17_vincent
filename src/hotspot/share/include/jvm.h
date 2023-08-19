@@ -293,6 +293,10 @@ JVM_GetAllThreads(JNIEnv *env, jclass dummy);
 JNIEXPORT void JNICALL
 JVM_SetNativeThreadName(JNIEnv *env, jobject jthread, jstring name);
 
+/* Vincent */
+JNIEXPORT void JNICALL
+JVM_PrintVincentLogger(JNIEnv *env, jobject thread);
+
 /* getStackTrace() and getAllStackTraces() method */
 JNIEXPORT jobjectArray JNICALL
 JVM_DumpThreads(JNIEnv *env, jclass threadClass, jobjectArray threads);

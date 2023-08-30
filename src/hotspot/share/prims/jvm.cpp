@@ -3129,6 +3129,13 @@ JVM_ENTRY(void, JVM_SetNativeThreadName(JNIEnv* env, jobject jthread, jstring na
   }
 JVM_END
 
+
+//Vincent
+#include "logging/vincentLogger.hpp"
+JVM_ENTRY(void, JVM_PrintVincentLogger(JNIEnv* env, jobject jthread))
+  vincent_logger->print_logger();
+JVM_END
+
 // java.lang.SecurityManager ///////////////////////////////////////////////////////////////////////
 
 JVM_ENTRY(jobjectArray, JVM_GetClassContext(JNIEnv *env))

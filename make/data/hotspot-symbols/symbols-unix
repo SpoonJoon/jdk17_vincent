@@ -187,6 +187,8 @@ JVM_ResumeThread
 JVM_SetArrayElement
 JVM_SetClassSigners
 JVM_SetNativeThreadName
+# Vincent
+JVM_PrintVincentLogger
 JVM_SetPrimitiveArrayElement
 JVM_SetThreadPriority
 JVM_Sleep
